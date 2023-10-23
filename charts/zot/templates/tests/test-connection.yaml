@@ -4,6 +4,7 @@ metadata:
   name: servercert
   annotations:
     "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded,hook-failed
 data:
   certificate: |-
     LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN6akNDQWJhZ0F3SUJBZ0lVR3pFR1pjY3VU
@@ -32,6 +33,7 @@ metadata:
   name: serverkey
   annotations:
     "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded,hook-failed
 data:
   key: |-
     LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZB
@@ -73,6 +75,7 @@ metadata:
     {{- include "zot.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded,hook-failed
 spec:
   containers:
     - name: wget
