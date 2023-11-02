@@ -59,7 +59,7 @@ jobs:
           for TEST_DIR in ci/*
           do
             echo "Running test $(pwd)/${TEST_DIR}"
-            ct install --target-branch ${{ env.TARGET_BRANCH }} --chart-dirs $(pwd)/${TEST_DIR} --debug
+            ct install --target-branch ${{ env.TARGET_BRANCH }} --charts $(pwd)/${TEST_DIR} --debug
           done
       - if: github.event_name == 'push' && github.ref_name == 'main'
         name: Run chart-releaser
