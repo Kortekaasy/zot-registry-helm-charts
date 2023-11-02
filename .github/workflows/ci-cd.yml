@@ -58,6 +58,7 @@ jobs:
         run: |
           for test in ci/*
           do
+            echo "Running test ci/$test"
             ct install --target-branch ${{ env.TARGET_BRANCH }} --since ${{ env.SINCE }} --chart-dirs ci/$test
           done
       - if: github.event_name == 'push' && github.ref_name == 'main'
