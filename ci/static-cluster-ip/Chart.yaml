@@ -1,5 +1,5 @@
 apiVersion: v2
-name: default
+name: static-cluster-ip
 description: Test chart for zot static cluster ip values
 type: application
 version: 0.1.0

@@ -1,5 +1,5 @@
 apiVersion: v2
-name: default
+name: tls
 description: Test chart for zot tls values
 type: application
 version: 0.1.0
