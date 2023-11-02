@@ -1,0 +1,6 @@
+dependencies:
+- name: zot
+  repository: file://../../charts/zot
+  version: 0.1.35
+digest: sha256:ed22b0e504301f8312e98333bce349eb391838037ad8cca2c422b2413ce97f9f
+generated: "2023-11-02T10:15:13.665034+01:00"
