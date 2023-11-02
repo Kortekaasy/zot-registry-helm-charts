@@ -56,10 +56,10 @@ jobs:
       - name: Install and test helm charts
         if: steps.list-changed.outputs.changed == 'true' || github.event_name == 'push'
         run: |
-          for test in ci/*
+          for TEST_DIR in ci/*
           do
-            echo "Running test ci/$test"
-            ct install --target-branch ${{ env.TARGET_BRANCH }} --since ${{ env.SINCE }} --chart-dirs ci/$test
+            echo "Running test $TEST_DIR"
+            ct install --target-branch ${{ env.TARGET_BRANCH }} --since ${{ env.SINCE }} --chart-dirs $TEST_DIR
           done
       - if: github.event_name == 'push' && github.ref_name == 'main'
         name: Run chart-releaser
