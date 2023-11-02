@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - main
+      - helm-chart-tests
   pull_request:
     branches:
       - main
@@ -54,7 +55,11 @@ jobs:
         uses: helm/kind-action@v1.4.0
       - name: Install and test helm charts
         if: steps.list-changed.outputs.changed == 'true' || github.event_name == 'push'
-        run: ct install --target-branch ${{ env.TARGET_BRANCH }} --since ${{ env.SINCE }}
+        run: |
+          for test in ci/*
+          do
+            ct install --target-branch ${{ env.TARGET_BRANCH }} --since ${{ env.SINCE }} --chart-dirs ci/$test
+          done
       - if: github.event_name == 'push' && github.ref_name == 'main'
         name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.0
