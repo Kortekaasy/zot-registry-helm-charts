@@ -56,7 +56,7 @@ jobs:
       - name: Install and test helm charts
         if: steps.list-changed.outputs.changed == 'true' || github.event_name == 'push'
         run: |
-          for TEST_DIR in ci/*
+          for TEST_DIR in tests/ci/*
           do
             echo "Running test $(pwd)/${TEST_DIR}"
             ct install --target-branch ${{ env.TARGET_BRANCH }} --charts $(pwd)/${TEST_DIR}
